@@ -20,7 +20,7 @@ struct EmbraceOutdoorsApp: App {
         do {
             try Embrace.setup(
                 options: Embrace.Options(
-                    appId: "84eN2",
+                    appId: "-----",
                     platform: .default,
                     // add span exporter locations
                     export: OpenTelemetryExport()
