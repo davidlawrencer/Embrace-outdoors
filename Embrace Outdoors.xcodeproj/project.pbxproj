@@ -14,6 +14,8 @@
 		54A1CFC42BE191CF0082DEF3 /* EmbraceIO in Frameworks */ = {isa = PBXBuildFile; productRef = 54A1CFC32BE191CF0082DEF3 /* EmbraceIO */; };
 		54A1CFC62BE191F10082DEF3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A1CFC52BE191F10082DEF3 /* DetailView.swift */; };
 		54A1CFC82BE192020082DEF3 /* ParkRequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A1CFC72BE192020082DEF3 /* ParkRequestResult.swift */; };
+		54A1CFCF2BE19F270082DEF3 /* upload in Resources */ = {isa = PBXBuildFile; fileRef = 54A1CFCD2BE19F270082DEF3 /* upload */; };
+		54A1CFD02BE19F270082DEF3 /* run.sh in Resources */ = {isa = PBXBuildFile; fileRef = 54A1CFCE2BE19F270082DEF3 /* run.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		54A1CFBB2BE191630082DEF3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		54A1CFC52BE191F10082DEF3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		54A1CFC72BE192020082DEF3 /* ParkRequestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkRequestResult.swift; sourceTree = "<group>"; };
+		54A1CFCD2BE19F270082DEF3 /* upload */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = upload; sourceTree = "<group>"; };
+		54A1CFCE2BE19F270082DEF3 /* run.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = run.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 		54A1CFC92BE192160082DEF3 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				54A1CFD12BE19F2C0082DEF3 /* Build */,
 				54A1CFB72BE191630082DEF3 /* Assets.xcassets */,
 				54A1CFB32BE191610082DEF3 /* EmbraceOutdoorsApp.swift */,
 			);
@@ -101,6 +106,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		54A1CFD12BE19F2C0082DEF3 /* Build */ = {
+			isa = PBXGroup;
+			children = (
+				54A1CFCE2BE19F270082DEF3 /* run.sh */,
+				54A1CFCD2BE19F270082DEF3 /* upload */,
+			);
+			path = Build;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -111,6 +125,7 @@
 				54A1CFAC2BE191610082DEF3 /* Sources */,
 				54A1CFAD2BE191610082DEF3 /* Frameworks */,
 				54A1CFAE2BE191610082DEF3 /* Resources */,
+				54A1CFCC2BE19F090082DEF3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -165,12 +180,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54A1CFD02BE19F270082DEF3 /* run.sh in Resources */,
 				54A1CFBC2BE191630082DEF3 /* Preview Assets.xcassets in Resources */,
 				54A1CFB82BE191630082DEF3 /* Assets.xcassets in Resources */,
+				54A1CFCF2BE19F270082DEF3 /* upload in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		54A1CFCC2BE19F090082DEF3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "EMBRACE_ID=USE_YOUR_KEY EMBRACE_TOKEN=USE_YOUR_TOKEN \"${SRCROOT}/App/Build/run.sh\"\n\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		54A1CFAC2BE191610082DEF3 /* Sources */ = {
@@ -310,9 +347,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Embrace Outdoors/Preview Content\"";
-				DEVELOPMENT_TEAM = 7L6ZG648LR;
+				DEVELOPMENT_TEAM = L5RVT7J8CV;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -348,9 +386,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Embrace Outdoors/Preview Content\"";
-				DEVELOPMENT_TEAM = 7L6ZG648LR;
+				DEVELOPMENT_TEAM = L5RVT7J8CV;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
