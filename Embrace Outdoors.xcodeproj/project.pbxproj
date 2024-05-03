@@ -127,6 +127,7 @@
 				54A1CFAC2BE191610082DEF3 /* Sources */,
 				54A1CFAD2BE191610082DEF3 /* Frameworks */,
 				54A1CFAE2BE191610082DEF3 /* Resources */,
+				544C6D832BE5360B00D85DE5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -191,6 +192,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		544C6D832BE5360B00D85DE5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "EMBRACE_ID=USE_YOUR_KEY EMBRACE_TOKEN=USE_YOUR_TOKEN \"${SRCROOT}/Embrace\\ Outdoors/App/Build/run.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		54A1CFAC2BE191610082DEF3 /* Sources */ = {
