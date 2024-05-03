@@ -3,4 +3,22 @@
    uuid = "6EB00A18-36AD-43D8-B7A7-8B5B66903740"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "65A84DE9-7D09-461B-8FBE-70039F6881FC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Library/Developer/Xcode/DerivedData/Embrace_Outdoors-ajjfftkalzmfaucqkblgxuhcsvrm/SourcePackages/checkouts/embrace-apple-sdk/Sources/EmbraceCore/Capture/Network/URLSessionTaskHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "create(task:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

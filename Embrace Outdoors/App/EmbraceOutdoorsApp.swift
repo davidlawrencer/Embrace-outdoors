@@ -7,6 +7,7 @@
 
 import SwiftUI
 import EmbraceIO
+import ZipkinExporter
 
 @main
 struct EmbraceOutdoorsApp: App {
@@ -21,9 +22,16 @@ struct EmbraceOutdoorsApp: App {
             try Embrace.setup(
                 options: Embrace.Options(
                     appId: "84eN2",
-                    platform: .default,
+                    platform: .default//,
+//                    endpoints: Embrace.Endpoints(
+//                        baseURL: "http://localhost:8989/api",
+//                        developmentBaseURL: "http://localhost:8989/api",
+//                        configBaseURL: "http://localhost:8989/api"
+//                    )
                     // add span exporter locations
-                    export: OpenTelemetryExport()
+//                    export: OpenTelemetryExport(
+//                        spanExporter: ZipkinTraceExporter(options: ZipkinTraceExporterOptions())
+//                        )
                 )
             ).start()
         } catch let e {

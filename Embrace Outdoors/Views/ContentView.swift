@@ -98,7 +98,7 @@ struct ContentView: View {
                     Button {
                         fetchEmbraceMockNSF()
                     } label: {
-                        Text("Make a request to Embrace with traceparent")
+                        Text("Make a request that uses Network Span Forwarding")
                     }
 
                     Button {
@@ -119,33 +119,40 @@ struct ContentView: View {
                         Text("Crash!")
                     }
                     
-                } header: {
-                    Text("Try these requests!")
-                }
-                
-                Section {
-
                     Button {
                         buildSpans()
                     } label: {
                         Text("Create a trace")
                     }
-
-                    Button {
-                        buildSpans2()
-                    } label: {
-                        Text("Create a saucy trace")
-                    }
-
-                    Button {
-                        //TODO: Build trace detail screen
-                    } label: {
-                        Text("Define your own trace")
-                    }
-
+                    
                 } header: {
-                    Text("Try some traces")
+                    Text("Try these requests!")
                 }
+                
+                
+//                Section {
+//
+//                    Button {
+//                        buildSpans()
+//                    } label: {
+//                        Text("Create a trace")
+//                    }
+//
+//                    Button {
+//                        buildSpans2()
+//                    } label: {
+//                        Text("Create a saucy trace")
+//                    }
+//
+//                    Button {
+//                        //TODO: Build trace detail screen
+//                    } label: {
+//                        Text("Define your own trace")
+//                    }
+//
+//                } header: {
+//                    Text("Try some traces")
+//                }
 
                 
                 // List of items after request
@@ -174,16 +181,23 @@ struct ContentView: View {
             Text("Something Happened Here")
         }
     }
+    
     //MARK: Networking
     func fetchEmbraceMockNSF() {
-        let url = URL( string: "https://dash-api.embrace.io/mock/trace_forwarding")!
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data,
+        let url = URL(string: "https://dash-api.embrace.io/mock/trace_forwarding")!
+        var request = URLRequest(url: url)
+        request.addValue(
+            "00-c1ca9fb1491aabd3cc6b81606b124023-d7e035eb3aefa6f6-01",
+            forHTTPHeaderField: "traceparent")
+        request.httpMethod = "POST"
+
+        URLSession.shared.dataTask(with: request, completionHandler: { data, response, e in
+            guard let _ = data,
                   let response = response else { return }
-            print(data)
             print(response)
-        }.resume()
+        }).resume()
+        
     }
 
     func fetchNationalParkData() {
@@ -338,39 +352,43 @@ struct ContentView: View {
         let span = client.buildSpan(
             name: "Opened Streaming Websocket",
             attributes: ["service-type" : "websocket"]
-        ).startSpan()
+        ).markAsKeySpan()
+        .startSpan()
         
         let childSpan = client
             .buildSpan(name: "Began Streaming Information Inside Websocket Span")
-            .setStartTime(time: Date.now.addingTimeInterval(1.5))
+            .setStartTime(time: Date.now)
             .setParent(span)
+            .markAsKeySpan()
             .startSpan()
         
+        sleep(1)
         childSpan.addEvent(
             name: "Received streamed data",
             attributes: ["data-batch" : .int(1)],
-            timestamp: Date.now.addingTimeInterval(3.0)
+            timestamp: Date.now
         )
-        
+        sleep(1)
         childSpan.addEvent(
             name: "Received streamed data",
             attributes: ["data-batch" : .int(2)],
-            timestamp: Date.now.addingTimeInterval(4.0)
+            timestamp: Date.now
         )
-
+        sleep(1)
         childSpan.addEvent(
             name: "Received streamed data",
             attributes: ["data-batch" : .int(3)],
-            timestamp: Date.now.addingTimeInterval(5.0)
+            timestamp: Date.now
         )
-        
+        sleep(1)
         span.addEvent(
             name: "Received close notice",
-            timestamp: Date.now.addingTimeInterval(6.0)
+            timestamp: Date.now
         )
-        
-        childSpan.end(time: Date.now.addingTimeInterval(6.1))
-        span.end(time: Date.now.addingTimeInterval(6.1))
+        sleep(1)
+        childSpan.end(time: Date.now)
+        sleep(1)
+        span.end(time: Date.now)
     }
 }
 

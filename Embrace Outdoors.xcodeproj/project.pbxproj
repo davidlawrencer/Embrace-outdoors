@@ -16,6 +16,7 @@
 		54A1CFC82BE192020082DEF3 /* ParkRequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A1CFC72BE192020082DEF3 /* ParkRequestResult.swift */; };
 		54A1CFD52BE1A25C0082DEF3 /* run.sh in Resources */ = {isa = PBXBuildFile; fileRef = 54A1CFD32BE1A25C0082DEF3 /* run.sh */; };
 		54A1CFD62BE1A25C0082DEF3 /* upload in Resources */ = {isa = PBXBuildFile; fileRef = 54A1CFD42BE1A25C0082DEF3 /* upload */; };
+		54A2BE612BE1A70700CF1D28 /* ZipkinExporter in Frameworks */ = {isa = PBXBuildFile; productRef = 54A2BE602BE1A70700CF1D28 /* ZipkinExporter */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54A2BE612BE1A70700CF1D28 /* ZipkinExporter in Frameworks */,
 				54A1CFC42BE191CF0082DEF3 /* EmbraceIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,7 +127,6 @@
 				54A1CFAC2BE191610082DEF3 /* Sources */,
 				54A1CFAD2BE191610082DEF3 /* Frameworks */,
 				54A1CFAE2BE191610082DEF3 /* Resources */,
-				54A1CFD72BE1A2670082DEF3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -134,6 +135,7 @@
 			name = "Embrace Outdoors";
 			packageProductDependencies = (
 				54A1CFC32BE191CF0082DEF3 /* EmbraceIO */,
+				54A2BE602BE1A70700CF1D28 /* ZipkinExporter */,
 			);
 			productName = "Embrace Outdoors";
 			productReference = 54A1CFB02BE191610082DEF3 /* Embrace Outdoors.app */;
@@ -165,6 +167,7 @@
 			mainGroup = 54A1CFA72BE191610082DEF3;
 			packageReferences = (
 				54A1CFC22BE191CF0082DEF3 /* XCRemoteSwiftPackageReference "embrace-apple-sdk" */,
+				54A2BE5F2BE1A70700CF1D28 /* XCRemoteSwiftPackageReference "opentelemetry-swift" */,
 			);
 			productRefGroup = 54A1CFB12BE191610082DEF3 /* Products */;
 			projectDirPath = "";
@@ -188,26 +191,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		54A1CFD72BE1A2670082DEF3 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "EMBRACE_ID=USE_YOUR_KEY EMBRACE_TOKEN=USE_YOUR_TOKEN \"${SRCROOT}/App/Build/run.sh\"\n\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		54A1CFAC2BE191610082DEF3 /* Sources */ = {
@@ -362,7 +345,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
@@ -401,7 +384,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
@@ -448,6 +431,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		54A2BE5F2BE1A70700CF1D28 /* XCRemoteSwiftPackageReference "opentelemetry-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/open-telemetry/opentelemetry-swift";
+			requirement = {
+				kind = exactVersion;
+				version = 1.5.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -455,6 +446,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 54A1CFC22BE191CF0082DEF3 /* XCRemoteSwiftPackageReference "embrace-apple-sdk" */;
 			productName = EmbraceIO;
+		};
+		54A2BE602BE1A70700CF1D28 /* ZipkinExporter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54A2BE5F2BE1A70700CF1D28 /* XCRemoteSwiftPackageReference "opentelemetry-swift" */;
+			productName = ZipkinExporter;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
